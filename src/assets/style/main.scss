@@ -1,0 +1,15 @@
+html {
+  font-size: 10px;
+  body {
+    min-width: $minWidth;
+    min-height: $minHeight;
+    color: $textColor;
+    overflow-y: hidden;
+    overflow-x: auto;
+    font-family: '微软雅黑';
+    padding: 0;
+    margin: 0;
+    font-size:1.6rem;
+    background-color: barndColor;
+  }
+}
