@@ -1,15 +1,29 @@
 html {
   font-size: 10px;
+  height: 100%;
   body {
-    min-width: $minWidth;
-    min-height: $minHeight;
+     height: 100%;
+     min-width: $minWidth;
+     min-height: $minHeight;
     color: $textColor;
     overflow-y: hidden;
     overflow-x: auto;
-    font-family: '微软雅黑';
+    font-family: 'Helvetica Neue,Arial,';
     padding: 0;
     margin: 0;
     font-size:1.6rem;
-    background-color: barndColor;
+    background-color: $bodyBgColor;
+    #app{
+        min-height:100%; 
+       .menuAside{
+        background-color: $menuBgColor;
+        height: 100%;
+      }
+    }   
   }
+}
+
+*{
+  margin: 0;
+  padding: 0;
 }
