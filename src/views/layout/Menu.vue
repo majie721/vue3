@@ -4,8 +4,8 @@
         <img src="@/assets/image/logo.png" alt="">
         <h1 v-if="!collapsed" >Admin Pro</h1>
       </div> 
-      <div>
-        <a-menu  theme="dark" collapsed="false" mode="inline" style="height: 500px;overflow-y:auto;">
+      <div class="menu-container">
+        <a-menu class="menu-container-body" theme="dark" collapsed="false" mode="inline">
         <a-menu-item key="1">
           <user-outlined />
           <span>Option 1</span>
@@ -60,6 +60,82 @@
           <user-outlined />
           <span>File</span>
         </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
+        <a-menu-item key="9">
+          <user-outlined />
+          <span>File</span>
+        </a-menu-item>
       </a-menu>
       </div> 
       
@@ -92,6 +168,14 @@ import { UserOutlined, VideoCameraOutlined, UploadOutlined } from '@ant-design/i
         overflow: hidden;
         display: inline-block;
         transition: 0.2;
-    }
+    }    
 }
+
+.menu-container{
+      overflow-y: auto;
+      &-body{
+        overflow-y: auto;
+        height: calc(100vh - 112px);
+      }
+    }
 </style>

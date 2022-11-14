@@ -3,27 +3,26 @@
     
     <a-layout>
       <MenuSide></MenuSide>
-      <a-layout-header style="background: #fff; padding: 0" />
-      <a-layout-content style="margin: 0 16px">
-        <a-breadcrumb style="margin: 16px 0">
-          <a-breadcrumb-item>User</a-breadcrumb-item>
-          <a-breadcrumb-item>Bill</a-breadcrumb-item>
-        </a-breadcrumb>
-        <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
-          Bill is a cat.
-        </div>
-      </a-layout-content>
-      <a-layout-footer style="text-align: center">
-        Ant Design ©2018 Created by Ant UED
-      </a-layout-footer>
+      <a-layout>
+        <HeaderSide></HeaderSide>
+        <ContentSide></ContentSide>
+        <FooterSide></FooterSide>
+      </a-layout>
     </a-layout>
   </a-layout>
 </template>
 <script lang="ts" setup>
   import MenuSide from "@/views/layout/Menu.vue"
+  import ContentSide from "@/views/layout/Content.vue"
+  import HeaderSide from "@/views/layout/Header.vue"
+  import FooterSide from "@/views/layout/Footer.vue"
 
   
 </script>
 <style lang="scss" scoped>
-
+  .layout-header {
+    display: block;
+    background-color: #fff;
+    width: 100%;
+  }
 </style>
