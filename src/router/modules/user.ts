@@ -1,17 +1,27 @@
 import type { RouteRecordRaw } from 'vue-router'
 
-const routes:RouteRecordRaw[] = [
+const routes: RouteRecordRaw[] = [
     {
-        path: '/about/:id',
-        name: 'about',
-        meta:{
-            requiresAuth:true
+        path: '/account',
+        name: '账号管理',
+        meta: {
+            requiresAuth: true,
         },
-        component: () => import('../../views/AboutView.vue')
+        children: [
+            {
+                path: "/center",
+                name: '个人中心',
+                component: () => import('@/views/account/center.vue')
+            },
+            {
+                path: "/settings",
+                name: '个人中心',
+                component: () => import('@/views/account/settings.vue')
+            },
+        ]
     }
-  ];
+];
 
-export default routes  
+export default routes
 
 
-  
