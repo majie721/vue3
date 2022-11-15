@@ -156,6 +156,7 @@ import { UserOutlined, VideoCameraOutlined, UploadOutlined } from '@ant-design/i
     align-items: center;
     overflow: hidden;
     padding: 16px 16px;
+    transition: 0.3;
     img {
         height: 32px;
         line-height: 32px;
