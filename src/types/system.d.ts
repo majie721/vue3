@@ -1,8 +1,10 @@
 declare namespace System{
     export interface MenuItem {
+        id:number,
+        pid:number,
         name:string,
-        icon:string,
         path:string,
-        children:MenuItem[]
+        icon?:string,
+        children?:MenuItem[]
     }
 }
