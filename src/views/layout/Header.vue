@@ -18,12 +18,12 @@
                                 <a-empty description="暂无未读消息" />
                             </div>
                             <div class="notify-card-footer">
-                                <div v-if="unReadCount>0" @click="readAll" class="notify-card-footer-left">
+                                    <div v-if="unReadCount>0" @click="readAll" class="notify-card-footer-left">
                                     标记已读
                                 </div>
                                 <div class="notify-card-footer-right">
                                     查看更多
-                                </div>
+                                </div>                        
                             </div>
                         </template>
                     </a-card>
