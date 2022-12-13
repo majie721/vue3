@@ -45,7 +45,7 @@ const panes = ref<System.MenuItem[]>(
       pid: 0,
       name: "仪表盘",
       icon: 'DashboardOutlined',
-      path: '/',
+      path: '/home',
     },
     {
       id: 4,

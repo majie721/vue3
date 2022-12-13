@@ -57,7 +57,7 @@ const menuList: System.MenuItem[] = [
     pid: 0,
     name: "个人页",
     icon: 'IdcardOutlined',
-    path: '',
+    path: '/account/center',
     children: [
       {
         id: 4,
