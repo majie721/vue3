@@ -2,7 +2,7 @@
   <a-layout-content class="content-container">
     <a-tabs v-model:activeKey="activeKey" @edit="onEdit" type="editable-card" :tabBarGutter="5" class="panes"
       :hideAdd="true" size="small">
-      <a-tab-pane v-for="pane in panes" :key="pane.id" :tab="pane.name" :closable="panes.length > 1">
+      <a-tab-pane v-for="(pane,index) in panesData" :key="index" :tab="pane.name" :closable="panesData.length > 1">
       </a-tab-pane>
     </a-tabs>
     <router-view></router-view>
@@ -11,59 +11,19 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-const activeKey = ref<number>(1)
+import { useStore } from '@/stores';
+import { storeToRefs } from 'pinia';
 
+const activeKey = ref(0)
 
-const remove = (targetKey: number) => {
-  let lastIndex = 0;
-  panes.value.forEach((pane, i) => {
-    if (pane.id === targetKey) {
-      lastIndex = i - 1;
-    }
-  });
-  panes.value = panes.value.filter(pane => pane.id !== targetKey);
-  if (panes.value.length && activeKey.value === targetKey) {
-    if (lastIndex >= 0) {
-      activeKey.value = panes.value[lastIndex].id;
-    } else {
-      activeKey.value = panes.value[0].id;
-    }
-  }
-};
-
-const panes = ref<System.MenuItem[]>(
-  [
-    {
-      id: 1,
-      pid: 0,
-      name: "工作台",
-      icon: 'BarChartOutlined',
-      path: '/',
-    },
-    {
-      id: 2,
-      pid: 0,
-      name: "仪表盘",
-      icon: 'DashboardOutlined',
-      path: '/home',
-    },
-    {
-      id: 4,
-      pid: 3,
-      name: "个人中心",
-      path: '/account/center',
-    }, {
-      id: 5,
-      pid: 3,
-      name: "个人设置",
-      path: '/account/settings',
-    }
-  ]
-)
+const {painesStore} = useStore()
+const {panesData} = storeToRefs(painesStore)
+const {remove} = painesStore;
 
 
 const onEdit = (targetKey: number | MouseEvent, action: string) => {
   if (action === 'remove') {
+    console.log('remove',targetKey);
     remove(targetKey as number);
   }
 };

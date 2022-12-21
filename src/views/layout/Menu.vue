@@ -15,13 +15,13 @@
                   <span>{{ item.name }}</span>
                 </span>
               </template>
-              <a-menu-item   v-for="subItem in item.children" :key="subItem.id" @click="()=>{$router.push(subItem.path)}">
+              <a-menu-item   v-for="subItem in item.children" :key="subItem.id" @click="clickHandle(subItem)">
                 <span>{{ subItem.name }}</span>
               </a-menu-item>
             </a-sub-menu>
           </template>
           <template v-else>
-            <a-menu-item :key="item.id" @click="()=>{$router.push(item.path)}">
+            <a-menu-item :key="item.id" @click="clickHandle(item)">
               <component v-if="item.icon" :is='item.icon'></component>
               <span>{{ item.name }}</span>
             </a-menu-item>
@@ -33,9 +33,16 @@
 </template>
 
 <script setup lang="ts">
+import { useStore } from '@/stores';
 import { UserOutlined, VideoCameraOutlined, UploadOutlined } from '@ant-design/icons-vue';
 import { ref } from 'vue'
+import { useRouter } from 'vue-router';
+
 const collapsed = ref(false)
+
+const router =  useRouter()
+const {painesStore} =  useStore()
+const {addPaine} = painesStore
 
 const menuList: System.MenuItem[] = [
   {
@@ -43,21 +50,21 @@ const menuList: System.MenuItem[] = [
     pid: 0,
     name: "工作台",
     icon: 'BarChartOutlined',
-    path: '/',
+    path: '/home',
   },
   {
     id: 2,
     pid: 0,
     name: "仪表盘",
     icon: 'DashboardOutlined',
-    path: '/',
+    path: '/dashboard',
   },
   {
     id: 3,
     pid: 0,
     name: "个人页",
     icon: 'IdcardOutlined',
-    path: '/account/center',
+    path: '/account',
     children: [
       {
         id: 4,
@@ -69,11 +76,24 @@ const menuList: System.MenuItem[] = [
         pid: 3,
         name: "个人设置",
         path: '/account/settings',
+      },
+      {
+        id: 6,
+        pid: 3,
+        name: "个人设置1",
+        path: '/account/settings1',
       }
     ],
   }
 
 ];
+
+const clickHandle = (item:System.MenuItem)=>{
+  console.log('clickHandle',item);
+  
+  router.push(item.path)
+  addPaine(item)
+}
 
 
 </script>

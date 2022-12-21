@@ -1,19 +1,13 @@
 import { createApp, nextTick, VueElement } from 'vue'
-import { createPinia } from 'pinia'
 import 'ant-design-vue/dist/antd.css';
 import * as Icons from "@ant-design/icons-vue"
-
-
-
 import App from './App.vue'
 import router from './router'
-
+import store from './stores'
 import '@/assets/style/main.scss'
 
 const app = createApp(App)
-
-app.use(createPinia())
-app.use(router)
+app.use(store).use(router)
 
 
 

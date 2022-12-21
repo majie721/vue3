@@ -13,6 +13,10 @@ import {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    port: 12345,
+    open:true
+  },
   plugins: [
     vue(), 
     vueJsx(),
