@@ -89,10 +89,7 @@ const menuList: System.MenuItem[] = [
 ];
 
 const clickHandle = (item:System.MenuItem)=>{
-  console.log('clickHandle',item);
-  
   router.push(item.path)
-  addPaine(item)
 }
 
 

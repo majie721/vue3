@@ -1,8 +1,13 @@
 <template>
   <a-layout-content class="content-container">
-    <a-tabs v-model:activeKey="activeKey" @edit="onEdit" type="editable-card" :tabBarGutter="5" class="panes"
+    <a-tabs v-model:activeKey="activeIndex" @edit="onEdit" type="editable-card" :tabBarGutter="5" class="panes"
       :hideAdd="true" size="small">
-      <a-tab-pane v-for="(pane,index) in panesData" :key="index" :tab="pane.name" :closable="panesData.length > 1">
+      <a-tab-pane v-for="(pane, index) in panesData" 
+      :key="index" 
+      :tab="pane.name" 
+      :closable="panesData.length > 1"
+      @click="onClickPane(pane,index)"
+      >
       </a-tab-pane>
     </a-tabs>
     <router-view></router-view>
@@ -10,23 +15,41 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch, watchEffect } from 'vue';
 import { useStore } from '@/stores';
 import { storeToRefs } from 'pinia';
-
-const activeKey = ref(0)
-
-const {painesStore} = useStore()
-const {panesData} = storeToRefs(painesStore)
-const {remove} = painesStore;
+import { onBeforeRouteUpdate, useRoute, useRouter } from 'vue-router';
 
 
+
+const { painesStore } = useStore()
+const { activeIndex, panesData } = storeToRefs(painesStore)
+const { remove } = painesStore;
+const router = useRouter()
+const route = useRoute()
+
+
+/**
+ * tab 关闭
+ * @param targetKey 
+ * @param action 
+ */
 const onEdit = (targetKey: number | MouseEvent, action: string) => {
   if (action === 'remove') {
-    console.log('remove',targetKey);
     remove(targetKey as number);
   }
 };
+
+const onClickPane = (pane:System.PaneItem,index:number)=>{
+  console.log('onClickPane')
+  router.push(pane)
+}
+
+
+
+
+
+
 
 </script>
 

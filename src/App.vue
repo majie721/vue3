@@ -16,6 +16,13 @@
   import ContentSide from "@/views/layout/Content.vue"
   import HeaderSide from "@/views/layout/Header.vue"
   import FooterSide from "@/views/layout/Footer.vue"
+import { onBeforeRouteUpdate } from "vue-router";
+
+  
+onBeforeRouteUpdate(to=>{
+  console.log('onBeforeRouteUpdate',to)
+})
+
 
   
 </script>

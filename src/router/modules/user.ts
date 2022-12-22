@@ -6,6 +6,7 @@ const routes: RouteRecordRaw[] = [
         name: '账号管理',
         meta: {
             requiresAuth: true,
+            multiplePane:false,
         },
         children: [
             {
@@ -21,6 +22,10 @@ const routes: RouteRecordRaw[] = [
             {
                 path: "settings1",
                 name: '个人中心2',
+                meta:{
+                    requiresAuth: true,
+                    multiplePane:true,
+                },
                 component: () => import('@/views/account/settings1.vue')
             },
         ]
