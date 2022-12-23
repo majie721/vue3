@@ -11,7 +11,7 @@ declare module 'vue-router' {
     // 每个路由都必须声明
     requiresAuth: boolean,
     //Pane是否打开多个
-    multiplePane:boolean,
+    multiplePane?:boolean,
   }
 }
 
@@ -31,7 +31,6 @@ const router = createRouter({
 
 //导航守卫
 router.beforeEach((to,from)=>{
-  console.log('beforeEach',to,from);
   if(to.fullPath !== from.fullPath && from.fullPath !=='/'){
     console.log('beforeEach',to.fullPath,from.fullPath);
     const {addPaine} = usePanesListStore()

@@ -21,7 +21,7 @@ const routes: RouteRecordRaw[] = [
             },
             {
                 path: "settings1",
-                name: '个人中心2',
+                name: '个人中心个人中心个人中心2',
                 meta:{
                     requiresAuth: true,
                     multiplePane:true,

@@ -12,17 +12,10 @@
   </a-layout>
 </template>
 <script lang="ts" setup>
-  import MenuSide from "@/views/layout/Menu.vue"
-  import ContentSide from "@/views/layout/Content.vue"
-  import HeaderSide from "@/views/layout/Header.vue"
-  import FooterSide from "@/views/layout/Footer.vue"
-import { onBeforeRouteUpdate } from "vue-router";
-
-  
-onBeforeRouteUpdate(to=>{
-  console.log('onBeforeRouteUpdate',to)
-})
-
+  import MenuSide from "@/layout/Menu.vue"
+  import ContentSide from "@/layout/Content.vue"
+  import HeaderSide from "@/layout/Header.vue"
+  import FooterSide from "@/layout/Footer.vue"
 
   
 </script>
