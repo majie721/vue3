@@ -12,18 +12,18 @@
               <template #title>
                 <span>
                   <component v-if="item.icon" :is='item.icon'></component>
-                  <span>{{ item.name }}</span>
+                  <span>{{ item.title }}</span>
                 </span>
               </template>
               <a-menu-item   v-for="subItem in item.children" :key="subItem.id" @click="clickHandle(subItem)">
-                <span>{{ subItem.name }}</span>
+                <span>{{ subItem.title }}</span>
               </a-menu-item>
             </a-sub-menu>
           </template>
           <template v-else>
             <a-menu-item :key="item.id" @click="clickHandle(item)">
               <component v-if="item.icon" :is='item.icon'></component>
-              <span>{{ item.name }}</span>
+              <span>{{ item.title }}</span>
             </a-menu-item>
           </template>
         </template>
@@ -35,64 +35,27 @@
 <script setup lang="ts">
 import { useStore } from '@/stores';
 import { UserOutlined, VideoCameraOutlined, UploadOutlined } from '@ant-design/icons-vue';
-import { ref } from 'vue'
+import { ref,reactive,onMounted, type Ref  } from 'vue'
 import { useRouter } from 'vue-router';
+import api from '@/api'
 
 const collapsed = ref(false)
+let menuList:Ref<System.MenuItem[]> = ref([])
 
 const router =  useRouter()
 const {painesStore} =  useStore()
 const {addPaine} = painesStore
 
-const menuList: System.MenuItem[] = [
-  {
-    id: 1,
-    pid: 0,
-    name: "工作台",
-    icon: 'BarChartOutlined',
-    path: '/home',
-  },
-  {
-    id: 2,
-    pid: 0,
-    name: "仪表盘",
-    icon: 'DashboardOutlined',
-    path: '/dashboard',
-  },
-  {
-    id: 3,
-    pid: 0,
-    name: "个人页",
-    icon: 'IdcardOutlined',
-    path: '/account',
-    children: [
-      {
-        id: 4,
-        pid: 3,
-        name: "个人中心",
-        path: '/account/center',
-      }, {
-        id: 5,
-        pid: 3,
-        name: "个人设置",
-        path: '/account/settings',
-      },
-      {
-        id: 6,
-        pid: 3,
-        name: "个人设置1",
-        path: '/account/settings1',
-      }
-    ],
-  }
-
-];
-
-const clickHandle = (item:System.MenuItem)=>{
-  router.push(item.path)
+const loadMenu =async () =>{
+  const {data} = await api.privilege.userMenus();
+  menuList.value = data!
 }
 
+const clickHandle = (item:System.MenuItem)=>{
+  router.push(item.route_path)
+}
 
+loadMenu()
 </script>
 
 <style scoped lang="scss">

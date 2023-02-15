@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>user settings</h1>
+        <h1>user settings1</h1>
         <div>exampleCounter:{{counter}}</div>
         <div>num:{{num}}</div>
         <button @click="increment">+1</button>

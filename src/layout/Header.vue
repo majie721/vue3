@@ -66,15 +66,15 @@
 
             <a-dropdown>
                 <span class="item lang">
-                    <global-outlined />
+                    <global-outlined /> <span>{{ locale }}</span>
                 </span>
                 <template #overlay>
                     <a-menu>
                         <a-menu-item>
-                            <a href="javascript:;">简体中文</a>
+                            <span :class="activeLang('zh')" @click="langChange('zh')">{{ langEnum.zh }}</span>
                         </a-menu-item>
-                        <a-menu-item>
-                            <a href="javascript:;">English</a>
+                        <a-menu-item >
+                            <span :class="activeLang('en')" @click="langChange('en')">{{ langEnum.en }}</span>
                         </a-menu-item>
                     </a-menu>
                 </template>
@@ -85,12 +85,24 @@
 </template>
 
 <script setup lang="ts">
-    import {ref}  from "vue"
+    import {computed, ref}  from "vue"
+    import {langEnum} from '@/lang/index'
+    import {useI18n} from 'vue-i18n'
     const visible = ref(false); //菜单显示
     const unReadCount = ref(12)
+    const {locale} = useI18n()
 
     function readAll(){
         unReadCount.value = 0;
+    }
+
+    function langChange(lang:string){
+        localStorage.setItem("language", lang)
+        locale.value = lang //这个代码负责实时切换语言
+    }
+
+    function activeLang(lang:string){
+       return lang === locale.value ? 'lang-active' : ''
     }
 
 </script>
@@ -149,6 +161,8 @@
             list-style: none;
         }
     }
+
+   
 }
 </style>
 
@@ -194,5 +208,9 @@
             }
         }
     }
+}
+
+.lang-active{
+    color: #1890ff !important;
 }
 </style>

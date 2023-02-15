@@ -16,22 +16,5 @@ import Paine from '@/components/layout/Paine.vue'
   background: #fff;
 }
 
-.panes {
-  background-color: $bodyBgColor;
-}
 
-:deep(.ant-tabs-top) {
-  .ant-tabs-nav {
-    margin: 0 !important;
-
-    &::before {
-      border-bottom: 0px !important;
-    }
-  }
-}
-
-:deep(.ant-tabs-tab) {
-  border-radius: 2px 10px 0 0 !important;
-  border: 0px !important;
-}
 </style>

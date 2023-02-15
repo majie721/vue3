@@ -93,14 +93,11 @@ watchEffect(()=>{
     top: 3px;
   }
 
-  :deep(.ant-tabs-top) {
-    .ant-tabs-nav {
-      margin: 0 !important;
-
+  :deep(.ant-tabs-nav) {
+    margin: 0 !important;
       &::before {
         border-bottom: 0px !important;
       }
-    }
   }
 
   :deep(.ant-tabs-tab) {

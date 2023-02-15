@@ -15,7 +15,16 @@ import {
 export default defineConfig({
   server: {
     port: 12345,
-    open:true
+    open:true,
+    proxy:{
+      '/api':{
+        
+                 target: 'http://mock.com/',
+                 changeOrigin: true,
+                 rewrite: (path) => path.replace(/^\/api/, '')
+               
+      },
+    }
   },
   plugins: [
     vue(), 

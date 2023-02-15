@@ -1,11 +1,12 @@
 <template>
   <a-layout style="min-height: 100vh">
-    
     <a-layout>
       <MenuSide></MenuSide>
       <a-layout>
         <HeaderSide></HeaderSide>
-        <ContentSide></ContentSide>
+        <a-config-provider :locale="zhCN">
+          <ContentSide></ContentSide>
+        </a-config-provider> 
         <FooterSide></FooterSide>
       </a-layout>
     </a-layout>
@@ -16,8 +17,12 @@
   import ContentSide from "@/layout/Content.vue"
   import HeaderSide from "@/layout/Header.vue"
   import FooterSide from "@/layout/Footer.vue"
+  import zhCN from 'ant-design-vue/es/locale/zh_CN';
+  import 'dayjs/locale/zh-cn';
+  import dayjs from 'dayjs';
+  dayjs.locale(zhCN.locale);
 
-  
+
 </script>
 <style lang="scss" scoped>
   .layout-header {
