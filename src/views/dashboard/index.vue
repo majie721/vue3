@@ -1,15 +1,15 @@
 <template>
     <div>
         <h1>dashbord页</h1>
-         <SearchFrom :searchConfig="config"  @onSearch="onSearch"></SearchFrom> 
-    </div>
+        <SearchFrom :searchConfig="config" @onSearch="onSearch"></SearchFrom>
+</div>
 </template>
 
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { useStore } from '@/stores/index'
 import { computed } from 'vue';
-import { ref, reactive, type Ref,provide, type InjectionKey } from 'vue';
+import { ref, reactive, type Ref, provide, type InjectionKey } from 'vue';
 
 const { exampleStore } = useStore();
 
@@ -21,16 +21,16 @@ const { increment, increment2 } = exampleStore
 
 const queryForm: System.OrderDemoParam = reactive({
     order_id: undefined,
-    updated_at:[]
+    updated_at: []
 });
 
 
-provide('_SearchFromKEY',queryForm)
-const onSearch = function(){
-    console.log('onSearch2',queryForm)
+provide('_SearchFromKEY', queryForm)
+const onSearch = function () {
+    console.log('onSearch2', queryForm)
 }
 
-const config :System.SearchItem[]= [
+const config: System.SearchItem[] = [
     {
         type: 'input',
         keyName: 'order_id',
@@ -50,6 +50,4 @@ const config :System.SearchItem[]= [
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

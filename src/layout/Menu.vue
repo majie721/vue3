@@ -1,5 +1,6 @@
 <template>
-  <a-layout-sider :collapsed="collapsed" collapsible @collapse="() => collapsed = !collapsed">
+  <div style="height:100vh;overflow: hidden">
+    <a-layout-sider class="menu-sider" :collapsed="collapsed" collapsible @collapse="() => collapsed = !collapsed">
     <div class="logo">
       <img src="@/assets/image/logo.png" alt="">
       <h1 v-if="!collapsed">Admin Pro</h1>
@@ -30,6 +31,8 @@
       </a-menu>
     </div>
   </a-layout-sider>
+  </div>
+  
 </template>
 
 <script setup lang="ts">
@@ -59,6 +62,7 @@ loadMenu()
 </script>
 
 <style scoped lang="scss">
+
 .logo {
   line-height: 32px;
   display: flex;

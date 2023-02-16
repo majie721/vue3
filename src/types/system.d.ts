@@ -1,11 +1,17 @@
 declare namespace System{
-    export interface Paginate<T>{
-        current_page:number,
-        data:Array<T>,
-        per_page:number,
-        total:number
+    export interface Paginate{
+        current:number,
+        pageSize:number,
+        total:number,
+        list:array,
     }
 
+
+
+    /** 菜单分页 */
+    export interface MenuListPaginate extends Paginate {
+        list:MenuItem[],
+    }   
 
     /** 菜单数据 */
     export interface MenuItem {
@@ -54,7 +60,6 @@ declare namespace System{
     export interface MenuParam{
         route_path?: string;
         title?:string;
-        type?:number;
         created_at?:string[]
     }
 
@@ -70,7 +75,7 @@ declare namespace System{
         type:string
         keyName:string;
         label:string;
-        placeholder:string|Array;
+        placeholder?:string|Array;
         valueFormat?:string;
         format?:string;
         allowClear?:boolean;

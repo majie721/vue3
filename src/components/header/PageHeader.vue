@@ -9,6 +9,9 @@
 .header-line {
     border-bottom: 1px solid rgb(235, 237, 240) !important;
     padding: 8px 12px;
-    font-size:12px
+    :deep(.ant-page-header-heading-title){
+        font-size:16px;
+        line-height: 22px;
+    }
 }
 </style>

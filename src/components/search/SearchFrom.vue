@@ -4,21 +4,22 @@
             <a-row :gutter="24">
                 <a-col v-for="(item, key) in searchConfig" :key="key" :span="6">
                     <a-form-item v-if="item.type === 'input'" :name="item.keyName" :label="item.label">
-                        <a-input v-model:value="queryForm[item.keyName]" :placeholder="item.placeholder"
-                            :allowClear="item.allowClear || true"></a-input>
+                        <a-input v-model:value="queryForm[item.keyName]" :placeholder="item?.placeholder || '请输入'"
+                            :allowClear="item.allowClear || true" autocomplete="off"></a-input>
                     </a-form-item>
 
                     <a-form-item v-if="item.type === 'timerPicker'" :name="item.keyName" :label="item.label">
-                        <a-range-picker v-model:value="queryForm[item.keyName]" :placeholder="item.placeholder"
+                        <a-range-picker v-model:value="queryForm[item.keyName]" :placeholder="item?.placeholder || ['开始时间','结束时间']"
                             :valueFormat="item.valueFormat || 'YYYY-MM-DD'" :format="item.format || 'YYYY-MM-DD'"
                             :allowClear="item.allowClear || true" />
                     </a-form-item>
 
                     <a-form-item v-if="item.type === 'select'" :name="item.keyName" :label="item.label">
-                        <a-select :placeholder="item.placeholder" v-model:value="queryForm[item.keyName]"
-                        :filter-option="selectFilterOption">
+                        <a-select :placeholder="item?.placeholder || '请选择'" :show-search="item.selectData?.filter === true"
+                        :allowClear="item.allowClear || true" :mode="item.selectData?.mode || 'combobox'"
+                            v-model:value="queryForm[item.keyName]" :filter-option="selectFilterOption">
                             <a-select-option v-for="option, oIndex in item.selectData!.options" :key="oIndex"
-                                :value="option.value">{{ option.text }}</a-select-option>
+                                :value="option.value" :text="option.text">{{ option.text }}</a-select-option>
                         </a-select>
                     </a-form-item>
                 </a-col>
@@ -32,13 +33,14 @@
                 </a-col>
             </a-row>
         </a-form>
-    </div>
+</div>
 </template>
 
 <script setup lang="ts">
+
+
 import type { FormInstance } from 'ant-design-vue';
 import { ref, reactive, defineProps, type PropType, inject } from 'vue';
-import { object } from 'vue-types';
 
 const props = defineProps({
     searchConfig: {
@@ -51,12 +53,12 @@ const formRef = ref<FormInstance>();
 const queryForm = inject<any>('_SearchFromKEY')
 
 
-const selectFilterOption =(input: string, option: any) => {
-      return option.value.toLowerCase().indexOf(input.toLowerCase()) >= 0;
+const selectFilterOption = (input: string, option: any) => {
+    console.log(option);
+
+    return option.text.toLowerCase().indexOf(input.toLowerCase()) >= 0;
 }
 
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

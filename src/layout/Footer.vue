@@ -13,5 +13,7 @@
           color: rgba(0,0,0,.45);  
           text-align: center;
           font-size: 1.4rem;
+          padding: 10px;
+          height: 42px;
         }
 </style>

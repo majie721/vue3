@@ -81,6 +81,7 @@ watchEffect(()=>{
 
 <style scoped lang="scss">
 .pane-continer {
+  height: 34px;
   .tab-title {
     max-width: 100px;
     display: inline-block;
