@@ -3,6 +3,8 @@ import { ref, reactive, type Ref, provide, type InjectionKey } from 'vue';
 
 const MenuSearchFrom = () => {
     const queryForm: System.MenuParam = reactive({
+        page:1,
+        pageSize:4,
         route_path: undefined,
         title: undefined,
         created_at: []

@@ -1,8 +1,7 @@
 <template>
   <a-layout-content class="content-container">
     <paine/>
-    <div id="page-content-box"></div>
-    <div  style="height:calc(100vh - 154px); overflow: scroll;">
+    <div id="content-box"  style="height:calc(100vh - 154px); overflow: scroll;">
       <router-view></router-view>
     </div>
     <FooterSide></FooterSide>

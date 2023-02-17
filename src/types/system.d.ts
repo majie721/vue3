@@ -1,15 +1,20 @@
 declare namespace System{
-    export interface Paginate{
+    export interface PaginateResponse{
         current:number,
         pageSize:number,
         total:number,
         list:array,
     }
 
+    export interface PaginateQuery{
+        pageSize:number,
+        page:number //页码
+    }
+
 
 
     /** 菜单分页 */
-    export interface MenuListPaginate extends Paginate {
+    export interface MenuListPaginate extends PaginateResponse {
         list:MenuItem[],
     }   
 
@@ -57,7 +62,7 @@ declare namespace System{
     }
 
     /** 菜单数据 */
-    export interface MenuParam{
+    export interface MenuParam extends PaginateQuery{
         route_path?: string;
         title?:string;
         created_at?:string[]
